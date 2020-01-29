@@ -402,7 +402,7 @@ def addDestination(targetRepo, continent, city, heritage_site, year_posted):
 
     # Add continent contains city
     ret = addTripleUUU(MAIN_TARGET_REPO, 
-                       "http://semantic.vocab.grant/{}".format(continent.strip().replace(' ', '_')),
+                       "http://semantic.vocab.grant/{}".format(continent.strip().replace(' ', '')),
                        "http://semantic.vocab.grant/contains_city",
                        "http://semantic.vocab.grant/{}".format(city))
     
@@ -412,19 +412,19 @@ def addDestination(targetRepo, continent, city, heritage_site, year_posted):
     ret = addTripleUUU(MAIN_TARGET_REPO, 
                        "http://semantic.vocab.grant/{}".format(city),
                        "http://semantic.vocab.grant/has_unesco_site",
-                       "http://semantic.vocab.grant/{}".format(heritage_site.strip().replace(' ', '_')))
+                       "http://semantic.vocab.grant/{}".format(heritage_site.strip().replace(' ', '')))
     
     print (ret)
     # Add heritage site is in continent
     ret = addTripleUUU(MAIN_TARGET_REPO,
-                       "http://semantic.vocab.grant/{}".format(heritage_site.strip().replace(' ', '_')),
+                       "http://semantic.vocab.grant/{}".format(heritage_site.strip().replace(' ', '')),
                        "http://dbpedia.org/ontology/Continent",
-                       "http://semantic.vocab.grant/{}".format(continent.strip().replace(' ', '_')))
+                       "http://semantic.vocab.grant/{}".format(continent.strip().replace(' ', '')))
                        
                        
     # Add heritage site first posted in year
     ret = addTripleTypedObj(MAIN_TARGET_REPO, 
-                       "http://semantic.vocab.grant/{}".format(heritage_site.strip().replace(' ', '_')),
+                       "http://semantic.vocab.grant/{}".format(heritage_site.strip().replace(' ', '')),
                        "https://schema.org/year_posted",
                        year_posted)
 
@@ -433,11 +433,11 @@ def addDestination(targetRepo, continent, city, heritage_site, year_posted):
     <https://schema.org/year_posted>
     <http://semantic.vocab.grant/City_of_Potosi/>
     """
-    ret = addTripleUULnsTyped(MAIN_TARGET_REPO,
-                         'semantic.vocab.grant/{}'.format(heritage_site.strip().replace(' ', '_')),
-                         'schema.org/year_posted',
-                         'spec_year_posted/#term_year',
-                         year_posted,"INT")
+    # ret = addTripleUULnsTyped(MAIN_TARGET_REPO,
+    #                      'semantic.vocab.grant/{}'.format(heritage_site.strip().replace(' ', '')),
+    #                      'schema.org/year_posted',
+    #                      'spec_year_posted/#term_year',
+    #                      year_posted,"INT")
 
 
     print (ret)
