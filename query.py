@@ -10,28 +10,12 @@ CURRENT_DIRECTORY = os.getcwd()
 AG_HOST = os.environ.get('AGRAPH_HOST', '169.62.35.69')
 AG_PORT = int(os.environ.get('AGRAPH_PORT', '10035'))
 AG_CATALOG = ''
-AG_USER = 'kingfisher'
-AG_PASSWORD = 'jackc0d'
+MAIN_TARGET_REPO = 'destinations'
+AG_USER = os.environ.get('AGRAPH_USER', 'student')
+AG_PASSWORD = os.environ.get('AGRAPH_PWD', 'v@cation')
 
-def __getDatatype(stringType):
-    if stringType.upper() == "INT":
-        return XMLSchema.INT
-    if stringType.upper() == "LONG":
-        return XMLSchema.LONG
-    if stringType.upper() == "DOUBLE":
-        return XMLSchema.DOUBLE
-    if stringType.upper() == "DECIMAL":
-        return XMLSchema.DECIMAL
-    if stringType.upper() == "FLOAT":
-        return XMLSchema.FLOAT
-    if stringType.upper() == "STRING":
-        return XMLSchema.STRING
-    if stringType.upper() == "BOOLEAN":
-        return XMLSchema.BOOLEAN
 
-    raise Exception("Unhandled Type %s" % stringType)
-
-def getConn(repo='destinations', accessMode=Repository.OPEN):
+def getConn(repo=MAIN_TARGET_REPO, accessMode=Repository.OPEN):
 
     server = AllegroGraphServer(AG_HOST, AG_PORT, AG_USER, AG_PASSWORD)
     catalog = server.openCatalog()
@@ -400,7 +384,63 @@ def getTriples(targetRepo):
 
 
 
+def addPerson(targetRepo, fullName, age):
 
+    ret = existsTripleUULnsTyped(targetRepo,
+                     'rdf.agentidea.com',
+                     'agents/{}'.format(fullName),
+                     'spec/people/#term_age',
+                     age,
+                     datatype="INT")
+
+
+def addDestination(targetRepo, continent, city, heritage_site, year_posted):
+    '''
+    addDesination(MAIN_TARGET_REPO,'South America','Bolivia','City of Potosi' )
+
+    '''
+
+    # Add continent contains city
+    ret = addTripleUUU(MAIN_TARGET_REPO, 
+                       "http://semantic.vocab.grant/{}".format(continent.strip().replace(' ', '_')),
+                       "http://semantic.vocab.grant/contains_city",
+                       "http://semantic.vocab.grant/{}".format(city))
+    
+    print (ret)
+
+    # Add city has unesco site x
+    ret = addTripleUUU(MAIN_TARGET_REPO, 
+                       "http://semantic.vocab.grant/{}".format(city),
+                       "http://semantic.vocab.grant/has_unesco_site",
+                       "http://semantic.vocab.grant/{}".format(heritage_site.strip().replace(' ', '_')))
+    
+    print (ret)
+    # Add heritage site is in continent
+    ret = addTripleUUU(MAIN_TARGET_REPO,
+                       "http://semantic.vocab.grant/{}".format(heritage_site.strip().replace(' ', '_')),
+                       "http://dbpedia.org/ontology/Continent",
+                       "http://semantic.vocab.grant/{}".format(continent.strip().replace(' ', '_')))
+                       
+                       
+    # Add heritage site first posted in year
+    ret = addTripleTypedObj(MAIN_TARGET_REPO, 
+                       "http://semantic.vocab.grant/{}".format(heritage_site.strip().replace(' ', '_')),
+                       "https://schema.org/year_posted",
+                       year_posted)
+
+    """
+    <https://schema.org/year_posted>
+    <https://schema.org/year_posted>
+    <http://semantic.vocab.grant/City_of_Potosi/>
+    """
+    ret = addTripleUULnsTyped(MAIN_TARGET_REPO,
+                         'semantic.vocab.grant/{}'.format(heritage_site.strip().replace(' ', '_')),
+                         'schema.org/year_posted',
+                         'spec_year_posted/#term_year',
+                         year_posted,"INT")
+
+
+    print (ret)
 
 
 def	getDestinations(predicateSuffix='Location'):
@@ -427,7 +467,7 @@ def	getDestinations(predicateSuffix='Location'):
     return rez
 
 def getStory(predicateSuffix='headline'):
-    conn = getConn("destinations")
+    conn = getConn("Annie")
     queryString = """
     SELECT ?s ?o ?url
     {
@@ -452,78 +492,95 @@ def getStory(predicateSuffix='headline'):
     return rez
 
 
+def __getDatatype(stringType):
+    if stringType.upper() == "INT":
+        return XMLSchema.INT
+    if stringType.upper() == "LONG":
+        return XMLSchema.LONG
+    if stringType.upper() == "DOUBLE":
+        return XMLSchema.DOUBLE
+    if stringType.upper() == "DECIMAL":
+        return XMLSchema.DECIMAL
+    if stringType.upper() == "FLOAT":
+        return XMLSchema.FLOAT
+    if stringType.upper() == "STRING":
+        return XMLSchema.STRING
+    if stringType.upper() == "BOOLEAN":
+        return XMLSchema.BOOLEAN
+
+    raise Exception("Unhandled Type %s" % stringType)
 
 
 
 
 def testA():
 
-    ret = addTripleUUU("Gandalahar", "http://rdf.agentidea.com/name/GrantSteinfeld",
+    ret = addTripleUUU(MAIN_TARGET_REPO, "http://rdf.agentidea.com/name/GrantShipley",
                        "http://http://xmlns.com/foaf/spec/#term_knows",
-                       "http://rdf.agentidea.com/name/LouiseSteinfeld")
+                       "http://rdf.agentidea.com/name/LouiseShipley")
 
     print( ret )
 
 
-    ret = addTripleUUL("Gandalahar", "http://rdf.agentidea.com/name/GrantSteinfeld",
+    ret = addTripleUUL(MAIN_TARGET_REPO, "http://rdf.agentidea.com/name/GrantShipley",
                        "http://http://xmlns.com/foaf/spec/#term_knows",
-                       "LouiseSteinfeld")
+                       "LouiseShipley")
 
     print( ret )
 
-    ret = addTripleTypedObj("Gandalahar", "http://rdf.agentidea.com/name/GrantSteinfeld",
+    ret = addTripleTypedObj(MAIN_TARGET_REPO, "http://rdf.agentidea.com/name/GrantShipley",
                        "http://xmlns.com/foaf/spec/#term_age",
                        42)
 
     print( ret )
 
-    ret = addTripleTypedObj("Gandalahar", "http://rdf.agentidea.com/name/GrantSteinfeld",
+    ret = addTripleTypedObj(MAIN_TARGET_REPO, "http://rdf.agentidea.com/name/GrantShipley",
                        "http://xmlns.com/foaf/spec/#term_status",
                        "Ebullient and Pensive","string")
 
     print( ret )
 
 def testB():
-    ret = addTripleUULns('Gandalahar',
+    ret = addTripleUULns(MAIN_TARGET_REPO,
                          'rdf.agentidea.com',
-                         'agents/GrantSteinfeld',
+                         'agents/GrantShipley',
                          'spec/people/#term_nick',
                          'Thor')
 
     print( ret )
-    ret = addTripleUULns('Gandalahar',
+    ret = addTripleUULns(MAIN_TARGET_REPO,
                          'rdf.agentidea.com',
-                         'agents/GrantSteinfeld',
+                         'agents/GrantShipley',
                          'spec/people/#term_foaf',
-                         'agents/RhadaPuppy')
+                         'agents/Rhada')
 
     print( ret )
-    ret = addTripleUULns('Gandalahar',
+    ret = addTripleUULns(MAIN_TARGET_REPO,
                          'rdf.agentidea.com',
-                         'agents/RhadaPuppy',
+                         'agents/Rhada',
                          'spec/people/#term_foaf',
-                         'agents/GrantSteinfeld')
+                         'agents/GrantShipley')
     print( ret )
-    ret = addTripleUULns('Gandalahar',
+    ret = addTripleUULns(MAIN_TARGET_REPO,
                          'rdf.agentidea.com',
-                         'agents/RhadaPuppy',
+                         'agents/Rhada',
                          'spec/people/#term_nick',
                          'Snorf')
 
 
 
     print( ret )
-    ret = addTripleUULnsTyped('Gandalahar',
+    ret = addTripleUULnsTyped(MAIN_TARGET_REPO,
                          'rdf.agentidea.com',
-                         'agents/RhadaPuppy',
+                         'agents/Rhada',
                          'spec/people/#term_age',
                          15,"INT")
 
     print( ret )
 
-    ret = addTripleUULnsTyped('Gandalahar',
+    ret = addTripleUULnsTyped(MAIN_TARGET_REPO,
                          'rdf.agentidea.com',
-                         'agents/GrantSteinfeld',
+                         'agents/GrantShipley',
                          'spec/people/#term_age',
                          48,"INT")
 
@@ -532,33 +589,27 @@ def testB():
 
 
 def testD():
-    bnode = addTripleBlankNode('Gandalahar','http://rdf.agentidea.com/rel/A','foo','NumeroDuo')
-    addTripleBlankNode('Gandalahar','http://rdf.agentidea.com/rel/B','boo',bnode)
-    addTripleBlankNode('Gandalahar','http://rdf.agentidea.com/rel/N','noo',bnode)
+    bnode = addTripleBlankNode(MAIN_TARGET_REPO,'http://rdf.agentidea.com/rel/A','foo','NumeroDuo')
+    addTripleBlankNode(MAIN_TARGET_REPO,'http://rdf.agentidea.com/rel/B','boo',bnode)
+    addTripleBlankNode(MAIN_TARGET_REPO,'http://rdf.agentidea.com/rel/N','noo',bnode)
 
 
 
-def testE():
 
-    ret = existsTripleUULnsTyped('Gandalahar',
-                     'rdf.agentidea.com',
-                     'agents/GrantSteinfeld',
-                     'spec/people/#term_age',
-                     48,datatype="INT")
 
     print( ret )
-    ret = addTripleUULnsTyped('Gandalahar',
+    ret = addTripleUULnsTyped(MAIN_TARGET_REPO,
                          'rdf.agentidea.com',
-                         'agents/GrantSteinfeld',
+                         'agents/GrantShipley',
                          'spec/people/#term_age',
                          48,datatype="INT")
 
 
 
     print( ret )
-    ret = existsTripleUULnsTyped('Gandalahar',
+    ret = existsTripleUULnsTyped(MAIN_TARGET_REPO,
                      'rdf.agentidea.com',
-                     'agents/GrantSteinfeld',
+                     'agents/GrantShipley',
                      'spec/people/#term_age',
                      48,datatype="INT")
 
@@ -566,36 +617,36 @@ def testE():
 
 def testG():
 
-    ret = existsTripleUUnsTyped('Gandalahar',
+    ret = existsTripleUUnsTyped(MAIN_TARGET_REPO,
                      'rdf.agentidea.com',
-                     'agents/GrantSteinfeld',
+                     'agents/GrantShipley',
                      'spec/people/#term_age')
     print( ret )
 
 def testH():
 
-    ret = addTripleUULnsTyped('Gandalahar',
+    ret = addTripleUULnsTyped(MAIN_TARGET_REPO,
                          'rdf.agentidea.com',
-                         'agents/GrantSteinfeld',
+                         'agents/GrantShipley',
                          'spec/people/#term_age',
                          49,datatype="INT", preventDuplicates=True)
     print( ret )
 
 def testI():
 
-    ret = addTripleUUUns('Gandalahar','rdf.agentidea.com','agents/GrantSteinfeld',
-                         'spec/people/#term_barelyknows','agents/PaulSteinfeld')
+    ret = addTripleUUUns(MAIN_TARGET_REPO,'rdf.agentidea.com','agents/GrantShipley',
+                         'spec/people/#term_barelyknows','agents/PaulShipley')
 
     print( ret )
 
 def testJ():
 
-    ret = addTripleLUUns('Gandalahar','rdf.agentidea.com','xyzABC',
+    ret = addTripleLUUns(MAIN_TARGET_REPO,'rdf.agentidea.com','xyzABC',
                          'spec/people/#term_src','http://www.agentidea.com')
 
     print( ret )
 
-    #ret = addTripleLULnsTyped('Gandalahar','rdf.agentidea.com','xyzABC',
+    #ret = addTripleLULnsTyped(MAIN_TARGET_REPO,'rdf.agentidea.com','xyzABC',
     #                   'spec/people/#term_title','ghandilahar',"string")
 
     print( ret )
@@ -603,11 +654,20 @@ def testJ():
 
 if __name__ == '__main__':
 
+    #addDestination(MAIN_TARGET_REPO,'North Africa','St Floris','Manovo-Gounda St Floris National Park', 1997)
+    #addDestination(MAIN_TARGET_REPO,'Southern Africa','Nelspruit, South Africa','Kruger National Park', 2019)
+    addDestination(MAIN_TARGET_REPO,'Europe','Paris France','Eifell Tower', 2005)
+    
+    addDestination(MAIN_TARGET_REPO,'Europe','Vienna Austria','Historic Centre of Vienna', 2017)
+    #addDestination(MAIN_TARGET_REPO,'South America','Bolivia','City of Potosi', 2014)
+    addDestination(MAIN_TARGET_REPO,'Central America','Tulum Mexico','Mayan Ruins of Tulum', 2001)
+    addDestination(MAIN_TARGET_REPO,'Central America','Cancun Mexico','Chichen Itza', 1985)
+    #addDestination(MAIN_TARGET_REPO,'Central America','Cancun Mexico','Xichen', 1977)
+    #addDestination(MAIN_TARGET_REPO,'Central America','Lake Peten Itza Guatemala','Tikal', 1977)
 
-
-
-    #testJ()
-    #print getTriples('Gandalahar')
-    #print( getDestinations )
-    print ( getConn())
+    #print( addPerson('foaf','JackSmith', 59) )
+    # Annie 
+    # print (getStory() )
+    print( getDestinations() )
+    print ( getConn() )
 
