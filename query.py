@@ -654,16 +654,16 @@ def testJ():
 
 if __name__ == '__main__':
 
-    #addDestination(MAIN_TARGET_REPO,'North Africa','St Floris','Manovo-Gounda St Floris National Park', 1997)
-    #addDestination(MAIN_TARGET_REPO,'Southern Africa','Nelspruit, South Africa','Kruger National Park', 2019)
-    addDestination(MAIN_TARGET_REPO,'Europe','Paris France','Eifell Tower', 2005)
+    addDestination(MAIN_TARGET_REPO,'North Africa','St Floris','Manovo-Gounda St Floris National Park', 1997)
+    addDestination(MAIN_TARGET_REPO,'Southern Africa','Nelspruit, South Africa','Kruger National Park', 2019)
+    # addDestination(MAIN_TARGET_REPO,'Europe','Paris France','Eifell Tower', 2005)
     
-    addDestination(MAIN_TARGET_REPO,'Europe','Vienna Austria','Historic Centre of Vienna', 2017)
-    #addDestination(MAIN_TARGET_REPO,'South America','Bolivia','City of Potosi', 2014)
-    addDestination(MAIN_TARGET_REPO,'Central America','Tulum Mexico','Mayan Ruins of Tulum', 2001)
-    addDestination(MAIN_TARGET_REPO,'Central America','Cancun Mexico','Chichen Itza', 1985)
-    #addDestination(MAIN_TARGET_REPO,'Central America','Cancun Mexico','Xichen', 1977)
-    #addDestination(MAIN_TARGET_REPO,'Central America','Lake Peten Itza Guatemala','Tikal', 1977)
+    # addDestination(MAIN_TARGET_REPO,'Europe','Vienna Austria','Historic Centre of Vienna', 2017)
+    addDestination(MAIN_TARGET_REPO,'South America','Bolivia','City of Potosi', 2014)
+    # addDestination(MAIN_TARGET_REPO,'Central America','Tulum Mexico','Mayan Ruins of Tulum', 2001)
+    # addDestination(MAIN_TARGET_REPO,'Central America','Cancun Mexico','Chichen Itza', 1985)
+    addDestination(MAIN_TARGET_REPO,'Central America','Cancun Mexico','Xichen', 1977)
+    addDestination(MAIN_TARGET_REPO,'Central America','Lake Peten Itza Guatemala','Tikal', 1977)
 
     #print( addPerson('foaf','JackSmith', 59) )
     # Annie 
