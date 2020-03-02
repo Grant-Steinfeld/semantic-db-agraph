@@ -5,11 +5,6 @@
 
 [Download Powerpoint slides given at this meetup](https://github.com/Grant-Steinfeld/semantic-db-agraph/blob/master/Semantic-Graph-Workshop-Jan2020.v.1.0.1.pptx)
 
-## Try out a SPARQL query in your browser right now:
-### DBPedia - discover movies where actress `Shailene Woodley` starred.
-Click on this link, then click on the execute query button:
-
-https://bit.ly/39eQd1q
 
 ### Classification of Data - Ontologies
 
@@ -64,10 +59,10 @@ Recognitions of:
 * Money Laundering
 * Human trafficking
 
-Etc
+## Semantic Datastores
+There are few in existence, a very good solid triple store we use to demonstrate semantic data is `AllegroGraph`
 
-
-## AllegroGraph
+AllegroGraph is:
 > Industry Leading Graph Database for Knowledge Graph Solutions and Common Lisp Technologies
 
 > Franz Inc. is an early innovator in Artificial Intelligence and leading supplier of Semantic Graph Database technology with expert knowledge in developing and deploying Knowledge Graph solutions.
@@ -75,8 +70,30 @@ Etc
 > AllegroGraph is an ultra scalable, high-performance, and transactional Semantic Graph Database which turns complex data into actionable business insights.
 
 
+
 ### Workshop Lab Notes
-### 1. Run Python3 queries to targeted RedHat Linux AGraph server
+
+#### Step 1. Query data
+
+
+> e.g. DBPedia - discover movies where actress `Shailene Woodley` acted in.
+
+```sql
+SELECT ?movie ?title ?name
+WHERE {
+  ?movie dbpedia-owl:starring [ rdfs:label "Shailene Woodley"@en ];
+         rdfs:label ?title;
+         dbpedia-owl:director [ rdfs:label ?name ].
+  FILTER LANGMATCHES(LANG(?title), "EN")
+  FILTER LANGMATCHES(LANG(?name),  "EN")
+}
+```
+Try out a real-time SPARQL query in your browser right now:
+Try this [DBPedia - hyperlink](https://bit.ly/39eQd1q), then click on the `Execute query` button:
+
+
+
+### 2. Run Python3 queries to targeted RedHat Linux AGraph server
 
 ```sh
 python3 Query.py
