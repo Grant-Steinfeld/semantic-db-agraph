@@ -22,7 +22,7 @@ Lets explore how we can link UNESCO heritage sites with Geographic / Regional da
 options targeted for enthusiasts who want a vacation itenerary that highlights Ancient and Modern wonders of the world!
 
 
-take a look a the [main program entry point ](https://github.com/Grant-Steinfeld/semantic-db-agraph/blob/master/query.py#L655)
+take a look a the [main program entry point ](https://github.com/Grant-Steinfeld/semantic-db-agraph/blob/master/query.py#L632)
 
 ```python
 
@@ -85,7 +85,7 @@ https://comunica.github.io/Article-ISWC2018-Resource/
 http://fragments.dbpedia.org/2016-04/en?subject=http%3A%2F%2Fdbpedia.org%2Fontology%2FWorldHeritageSite&predicate=&object=
 
 
-
+2016
 ### IBM Watson and Linked Data
 http://iswc2011.semanticweb.org/tutorials/semantic-web-technology-in-watson/index.html
 
@@ -93,9 +93,6 @@ http://iswc2011.semanticweb.org/tutorials/semantic-web-technology-in-watson/inde
 ### Other links
 https://www.mediawiki.org/wiki/Wikidata_Query_Service/User_Manual
 
+[Semantic natural language understanding with Spark Streaming, UIMA, and machine-learned ontologies](https://conferences.oreilly.com/strata/strata-ny-2016/public/schedule/detail/51498) - Strata+Hadoop World conference (2016)
 
-
-
-
-
-
+[Semantic natural language understanding with Spark, UIMA & machine-learned ontologies ](https://bit.ly/39i9PBZ) - Powerpoint slide deck - by David Talby and Claudiu Branzan
