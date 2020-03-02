@@ -22,7 +22,8 @@ Lets explore how we can link UNESCO heritage sites with Geographic / Regional da
 options targeted for enthusiasts who want a vacation itenerary that highlights Ancient and Modern wonders of the world!
 
 
-take a look a the main segment here
+take a look a the [main program entry point ](https://github.com/Grant-Steinfeld/semantic-db-agraph/blob/master/query.py#L655)
+
 ```python
 
 """ example calls to add continent node linked with city-country linked with UNESCO heritage site with year posted """
@@ -36,6 +37,8 @@ take a look a the main segment here
     addDestination(MAIN_TARGET_REPO,'Central America','Cancun Mexico','Xichen', 1977)
     addDestination(MAIN_TARGET_REPO,'Central America','Lake Peten Itza Guatemala','Tikal', 1977)
 ```
+
+and regard the [addDestination Function](https://github.com/Grant-Steinfeld/semantic-db-agraph/blob/master/query.py#L397-L429)
 
 ### requirements
 python3
