@@ -1,10 +1,26 @@
-#  Build Semantic Microservices with AllegroGraph and RedHat Kubernetes OpenShift
+#  Learn and Explore Semantic data using Franz AllegroGraph DB
 
-## run Query.py
+## Try out a SPARQL query in your browser right now:
+### DBPedia - discover movies where actress `Shailene Woodley` starred.
+Click on this link, then click on the execute query button:
+
+https://bit.ly/39eQd1q
+
+
+
+
+
+## AllegroGraph
+### Lab Notes
+### 1. Run Python3 queries to targeted RedHat Linux AGraph server
 
 ```sh
 python3 Query.py
 ```
+
+Lets explore how we can link UNESCO heritage sites with Geographic / Regional data in service of potential destination travel
+options targeted for enthusiasts who want a vacation itenerary that highlights Ancient and Modern wonders of the world!
+
 
 take a look a the main segment here
 ```python
@@ -33,3 +49,50 @@ AllegroGraph instance / [docker version](https://franz.com/agraph/docker/)
 ```sh
 pip3 install -r requirements.txt
 ```
+
+
+#### Resources
+http://live.dbpedia.org/ontology/WorldHeritageSite
+
+Franz AllegroGraph
+https://franz.com/
+
+
+Evans, Colin. Programming the Semantic Web: Build Flexible Applications with Graph Data by Toby Seg. O'Reilly Media. 
+
+
+### Dataset Sources: RDF / triple / linked data
+
+[DBPedia datasets](https://wiki.dbpedia.org/develop/datasets)
+
+https://www.w3.org/wiki/DataSetRDFDumps
+
+https://query.wikidata.org/
+
+[N-TRIPLES spec](http://www.w3.org/TR/rdf-testcases/#ntriples)
+
+[Entities Wikimedia](https://dumps.wikimedia.org/wikidatawiki/entities/)
+
+### Query options
+#### SPARQL
+Comunica: a Modular SPARQL Query Engine for the Web
+https://comunica.github.io/Article-ISWC2018-Resource/
+
+#### query by S P O
+http://fragments.dbpedia.org/2016-04/en?subject=http%3A%2F%2Fdbpedia.org%2Fontology%2FWorldHeritageSite&predicate=&object=
+
+
+
+### IBM Watson and Linked Data
+http://iswc2011.semanticweb.org/tutorials/semantic-web-technology-in-watson/index.html
+
+
+### Other links
+https://www.mediawiki.org/wiki/Wikidata_Query_Service/User_Manual
+
+
+
+
+
+
+
