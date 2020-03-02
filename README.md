@@ -1,4 +1,4 @@
-#  Learn and Explore Semantic data using Franz AllegroGraph DB
+#  Learn and Explore Semantic data using Franz AllegroGraph DB (AGraph)
 
 ## Workshop GitRepo 
 [Meetup Jan 2020](https://www.meetup.com/ibmcodenyc/events/267776895/)
@@ -69,6 +69,10 @@ AllegroGraph is:
 
 > AllegroGraph is an ultra scalable, high-performance, and transactional Semantic Graph Database which turns complex data into actionable business insights.
 
+> Has a full featured free edition with 50 million triple limit, which is plenty to get started and evaluate it
+
+[Download options AGraph](https://franz.com/agraph/downloads/)
+Not only can you install AGraph on Linux, but also in Docker or Virtual Machine optons are availible as well.
 
 
 ### Workshop Lab Notes
