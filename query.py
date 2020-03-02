@@ -7,12 +7,12 @@ import os
 
 CURRENT_DIRECTORY = os.getcwd() 
 
-AG_HOST = os.environ.get('AGRAPH_HOST', '169.62.35.69')
+AG_HOST = os.environ.get('AGRAPH_HOST')
 AG_PORT = int(os.environ.get('AGRAPH_PORT', '10035'))
 AG_CATALOG = ''
 MAIN_TARGET_REPO = 'destinations'
 AG_USER = os.environ.get('AGRAPH_USER', 'student')
-AG_PASSWORD = os.environ.get('AGRAPH_PWD', 'v@cation')
+AG_PASSWORD = os.environ.get('AGRAPH_PWD')
 
 
 def getConn(repo=MAIN_TARGET_REPO, accessMode=Repository.OPEN):
@@ -428,19 +428,7 @@ def addDestination(targetRepo, continent, city, heritage_site, year_posted):
                        "https://schema.org/year_posted",
                        year_posted)
 
-    """
-    <https://schema.org/year_posted>
-    <https://schema.org/year_posted>
-    <http://semantic.vocab.grant/City_of_Potosi/>
-    """
-    # ret = addTripleUULnsTyped(MAIN_TARGET_REPO,
-    #                      'semantic.vocab.grant/{}'.format(heritage_site.strip().replace(' ', '')),
-    #                      'schema.org/year_posted',
-    #                      'spec_year_posted/#term_year',
-    #                      year_posted,"INT")
 
-
-    print (ret)
 
 
 def	getDestinations(predicateSuffix='Location'):
@@ -632,42 +620,24 @@ def testH():
                          49,datatype="INT", preventDuplicates=True)
     print( ret )
 
-def testI():
 
-    ret = addTripleUUUns(MAIN_TARGET_REPO,'rdf.agentidea.com','agents/GrantShipley',
-                         'spec/people/#term_barelyknows','agents/PaulShipley')
-
-    print( ret )
 
 def testJ():
-
     ret = addTripleLUUns(MAIN_TARGET_REPO,'rdf.agentidea.com','xyzABC',
                          'spec/people/#term_src','http://www.agentidea.com')
 
-    print( ret )
 
-    #ret = addTripleLULnsTyped(MAIN_TARGET_REPO,'rdf.agentidea.com','xyzABC',
-    #                   'spec/people/#term_title','ghandilahar',"string")
-
-    print( ret )
 
 
 if __name__ == '__main__':
 
+    #lets add some UNESCO heritage site infromation related to reqion
     addDestination(MAIN_TARGET_REPO,'North Africa','St Floris','Manovo-Gounda St Floris National Park', 1997)
     addDestination(MAIN_TARGET_REPO,'Southern Africa','Nelspruit, South Africa','Kruger National Park', 2019)
-    # addDestination(MAIN_TARGET_REPO,'Europe','Paris France','Eifell Tower', 2005)
-    
-    # addDestination(MAIN_TARGET_REPO,'Europe','Vienna Austria','Historic Centre of Vienna', 2017)
+    addDestination(MAIN_TARGET_REPO,'Europe','Paris France','Eifell Tower', 2005) 
+    addDestination(MAIN_TARGET_REPO,'Europe','Vienna Austria','Historic Centre of Vienna', 2017)
     addDestination(MAIN_TARGET_REPO,'South America','Bolivia','City of Potosi', 2014)
-    # addDestination(MAIN_TARGET_REPO,'Central America','Tulum Mexico','Mayan Ruins of Tulum', 2001)
-    # addDestination(MAIN_TARGET_REPO,'Central America','Cancun Mexico','Chichen Itza', 1985)
+    addDestination(MAIN_TARGET_REPO,'Central America','Tulum Mexico','Mayan Ruins of Tulum', 2001)
+    addDestination(MAIN_TARGET_REPO,'Central America','Cancun Mexico','Chichen Itza', 1985)
     addDestination(MAIN_TARGET_REPO,'Central America','Cancun Mexico','Xichen', 1977)
     addDestination(MAIN_TARGET_REPO,'Central America','Lake Peten Itza Guatemala','Tikal', 1977)
-
-    #print( addPerson('foaf','JackSmith', 59) )
-    # Annie 
-    # print (getStory() )
-    print( getDestinations() )
-    print ( getConn() )
-
