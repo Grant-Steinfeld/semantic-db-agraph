@@ -1,0 +1,15 @@
+<https://earth.esa.int/concept/glaciers-ice-sheets> <http://www.w3.org/2004/02/skos/core#related> <https://earth.esa.int/concept/p-photon-optical-detectors> .
+<https://earth.esa.int/concept/glaciers-ice-sheets> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://earth.esa.int/concept/glaciers-ice-sheets> <https://schema.org/inDefinedTermSet> <https://earth.esa.int/concepts/concept_scheme/earth-topics> .
+<https://earth.esa.int/concept/glaciers-ice-sheets> <http://www.w3.org/2004/02/skos/core#exactMatch> <https://gcmd.earthdata.nasa.gov/kms/concept/8603db51-3484-4439-8b3b-a06f48e8c686> .
+<https://earth.esa.int/concept/glaciers-ice-sheets> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://schema.org/DefinedTerm> .
+<https://earth.esa.int/concept/glaciers-ice-sheets> <http://www.w3.org/2004/02/skos/core#exactMatch> <https://gcmd.earthdata.nasa.gov/kms/concept/099ab1ae-f4d2-48cc-be2f-86bd58ffc4ca> .
+<https://earth.esa.int/concept/glaciers-ice-sheets> <http://www.w3.org/2004/02/skos/core#prefLabel> "Glaciers and Ice Sheets"@en .
+<https://earth.esa.int/concept/glaciers-ice-sheets> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://www.eionet.europa.eu/gemet/en/concept/15205> .
+<https://earth.esa.int/concept/glaciers-ice-sheets> <http://www.w3.org/2004/02/skos/core#broader> <https://earth.esa.int/concept/cryosphere> .
+<https://earth.esa.int/concept/glaciers-ice-sheets> <http://www.w3.org/2004/02/skos/core#related> <https://earth.esa.int/concept/a-imaging-radars> .
+<https://earth.esa.int/concept/glaciers-ice-sheets> <http://www.w3.org/2004/02/skos/core#related> <https://earth.esa.int/concept/a-radar-altimeters> .
+<https://earth.esa.int/concept/glaciers-ice-sheets> <http://www.w3.org/2004/02/skos/core#inScheme> <https://earth.esa.int/concepts/concept_scheme/earth-topics> .
+<https://earth.esa.int/concept/glaciers-ice-sheets> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://www.eionet.europa.eu/gemet/en/concept/3673> .
+<https://earth.esa.int/concept/glaciers-ice-sheets> <https://schema.org/name> "Glaciers and Ice Sheets" .
+<https://earth.esa.int/concept/glaciers-ice-sheets> <http://www.w3.org/2004/02/skos/core#broader> <https://earth.esa.int/concept/terrestrial-hydrosphere> .
