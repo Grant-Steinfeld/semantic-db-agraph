@@ -13,8 +13,8 @@ AG_HOST = os.environ.get('AGRAPH_HOST','katagraphos.net') #Ubuntu 12 LTS
 AG_PORT = int(os.environ.get('AGRAPH_PORT', '10035'))
 AG_CATALOG = ''
 MAIN_TARGET_REPO = 'unesco'
-AG_USER = os.environ.get('AGRAPH_USER', 'kingfisher')
-AG_PASSWORD = os.environ.get('AGRAPH_PWD', 'who-COOKS-for-you-2')
+AG_USER = os.environ.get('AGRAPH_USER', 'student')
+AG_PASSWORD = os.environ.get('AGRAPH_PWD')
 
 
 def getConn(repo=MAIN_TARGET_REPO, accessMode=Repository.OPEN):
