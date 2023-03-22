@@ -24,7 +24,7 @@ def getConn(repo=MAIN_TARGET_REPO, accessMode=Repository.OPEN):
     myRepository = catalog.getRepository(repo, accessMode)
     myRepository.initialize()
     conn = myRepository.getConnection()
-    pdb.set_trace()
+    #pdb.set_trace()
     return conn
 
 def __getTypedLiteral(conn, namespace, subjectLocalName, predicateLocalName, objLiteral=None, datatype="STRING"):
@@ -485,12 +485,13 @@ def addDestination(targetRepo, continent, city, heritage_site, year_posted):
 if __name__ == '__main__':
 
     #lets add some UNESCO heritage site infromation related to reqion
-    addDestination(MAIN_TARGET_REPO,'North Africa','St Floris','Manovo-Gounda St Floris National Park', 1997)
-    addDestination(MAIN_TARGET_REPO,'Southern Africa','Nelspruit, South Africa','Kruger National Park', 2019)
-    addDestination(MAIN_TARGET_REPO,'Europe','Paris France','Eiffel Tower', 2005) 
-    addDestination(MAIN_TARGET_REPO,'Europe','Vienna Austria','Historic Centre of Vienna', 2017)
-    addDestination(MAIN_TARGET_REPO,'South America','Bolivia','City of Potosi', 2014)
-    addDestination(MAIN_TARGET_REPO,'Central America','Tulum Mexico','Mayan Ruins of Tulum', 2001)
-    addDestination(MAIN_TARGET_REPO,'Central America','Cancun Mexico','Chichen Itza', 1985)
-    addDestination(MAIN_TARGET_REPO,'Central America','Cancun Mexico','Xichen', 1977)
-    addDestination(MAIN_TARGET_REPO,'Central America','Lake Peten Itza Guatemala','Tikal', 1977)
+    # addDestination(MAIN_TARGET_REPO,'North Africa','St Floris','Manovo-Gounda St Floris National Park', 1997)
+    # addDestination(MAIN_TARGET_REPO,'Southern Africa','Nelspruit, South Africa','Kruger National Park', 2019)
+    # addDestination(MAIN_TARGET_REPO,'Europe','Paris France','Eiffel Tower', 2005) 
+    # addDestination(MAIN_TARGET_REPO,'Europe','Vienna Austria','Historic Centre of Vienna', 2017)
+    # addDestination(MAIN_TARGET_REPO,'South America','Bolivia','City of Potosi', 2014)
+    # addDestination(MAIN_TARGET_REPO,'Central America','Tulum Mexico','Mayan Ruins of Tulum', 2001)
+    # addDestination(MAIN_TARGET_REPO,'Central America','Cancun Mexico','Chichen Itza', 1985)
+    # addDestination(MAIN_TARGET_REPO,'Central America','Cancun Mexico','Xichen', 1977)
+    # addDestination(MAIN_TARGET_REPO,'Central America','Lake Peten Itza Guatemala','Tikal', 1977)
+    print( getDestinations())
