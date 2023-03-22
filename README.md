@@ -4,8 +4,8 @@
 
 Explore Semantic data using Franz AllegroGraph DB (AGraph)
 
-For the latest updates on this topic please checkout and
-[download this Powerpoint deck](https://github.com/Grant-Steinfeld/semantic-db-agraph/blob/master/Intro_to_Graph_Databases-Jan_21st_2023.v.2.0.2.pptx)
+For the latest updates on this topic please download and view this PowerPoint deck
+[Introduction to Graph databases](https://github.com/Grant-Steinfeld/semantic-db-agraph/blob/master/Intro_to_Graph_Databases-2023.v.3.0.0.pptx)
 
 ### Classification of Data - Ontologies
 
@@ -69,7 +69,7 @@ AllegroGraph is:
 
 > AllegroGraph is an ultra scalable, high-performance, and transactional Semantic Graph Database which turns complex data into actionable business insights.
 
-> Has a full featured free edition with `5 million triple limit`, which is plenty to get started, evaluate and have fun with it!
+> Has a full featured free edition with `5 million triple` limit, which is plenty to get started, evaluate and have fun with it!
 
 [Download options AGraph](https://franz.com/agraph/downloads/)
 Not only can you install AGraph on Linux, but also in Docker or Virtual Machine optons are availible as well.
