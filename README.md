@@ -1,5 +1,7 @@
 # Introduction to Graph Databases
 
+![Alice in Wonderland relations](./docs/images/Alice_In_Wonderland_Interconnections.jpeg)
+
 ## What you will Learn
 
 Explore Semantic data using Franz AllegroGraph DB (AGraph)
